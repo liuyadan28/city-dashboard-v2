@@ -818,6 +818,141 @@
         </div>
     </div>
     
+    <!-- 编辑项目详情弹窗 -->
+    <div class="modal" id="edit-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>编辑项目详情</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-form">
+                    <div class="form-group">
+                        <label>项目名称 *</label>
+                        <input type="text" value="智能设备制造项目" required>
+                    </div>
+                    <div class="form-group">
+                        <label>所属地区 *</label>
+                        <div class="region-select">
+                            <select>
+                                <option>北京市</option>
+                                <option>上海市</option>
+                                <option>广州市</option>
+                            </select>
+                            <select>
+                                <option>朝阳区</option>
+                            </select>
+                            <select>
+                                <option>三里屯街道</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>行业分类 *</label>
+                        <select>
+                            <option>信息技术</option>
+                            <option>制造业</option>
+                            <option>新能源</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>项目类型 *</label>
+                        <select>
+                            <option>市场化类</option>
+                            <option>政策引导类</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>计划投资金额（万元）*</label>
+                        <input type="number" value="5000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>建设周期 *</label>
+                        <input type="text" value="2年" required>
+                    </div>
+                    <div class="form-group">
+                        <label>项目简介</label>
+                        <textarea>该项目主要从事智能设备的研发、生产和销售，产品广泛应用于工业自动化领域。</textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" id="close-edit-modal">取消</button>
+                <button class="btn secondary" id="save-draft-edit">保存草稿</button>
+                <button class="btn primary" id="submit-edit">提交</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 接受项目弹窗 -->
+    <div class="modal" id="accept-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>接受项目</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="accept-form">
+                    <div class="form-group">
+                        <label>接受意见 *</label>
+                        <textarea placeholder="请输入接受意见" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>上传附件（非必填）</label>
+                        <div class="file-upload">
+                            <input type="file" id="accept-file-upload">
+                            <label for="accept-file-upload" class="file-upload-label">点击或拖拽文件到此处上传</label>
+                            <p>支持PDF/Word/Excel格式，单个文件不超过50MB</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" id="close-accept-modal">取消</button>
+                <button class="btn primary" id="submit-accept">确认接受</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 拒绝项目弹窗 -->
+    <div class="modal" id="reject-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>拒绝项目</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="reject-form">
+                    <div class="form-group">
+                        <label>拒绝理由 *</label>
+                        <select required>
+                            <option>行业不符</option>
+                            <option>投资规模不匹配</option>
+                            <option>风险过高</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>拒绝意见 *</label>
+                        <textarea placeholder="请输入拒绝意见" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>上传附件（非必填）</label>
+                        <div class="file-upload">
+                            <input type="file" id="reject-file-upload">
+                            <label for="reject-file-upload" class="file-upload-label">点击或拖拽文件到此处上传</label>
+                            <p>支持PDF/Word/Excel格式，单个文件不超过50MB</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" id="close-reject-modal">取消</button>
+                <button class="btn primary" id="submit-reject">确认拒绝</button>
+            </div>
+        </div>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>

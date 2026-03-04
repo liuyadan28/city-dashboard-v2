@@ -215,26 +215,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 接受/拒绝按钮功能
-    const acceptButtons = document.querySelectorAll('.accept-btn');
-    const rejectButtons = document.querySelectorAll('.reject-btn');
-    
-    acceptButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            if (confirm('确定接受该项目？')) {
-                alert('项目已接受，已流转至关注项目库');
-            }
-        });
-    });
-    
-    rejectButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const reason = prompt('请选择拒绝理由：\n1. 行业不符\n2. 投资规模不匹配\n3. 风险过高\n4. 其他');
-            if (reason) {
-                alert('项目已拒绝，退回至储备库');
-            }
-        });
-    });
+    // 旧的接受/拒绝按钮功能已被新的弹窗功能替代
+    // 此部分代码已注释，避免变量重定义
     
     // 启动投决按钮
     const investButtons = document.querySelectorAll('.invest-btn');
@@ -288,6 +270,149 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('提交材料功能');
         });
     });
+    
+    // 编辑项目详情弹窗
+    const editModal = document.getElementById('edit-modal');
+    const closeEditModalBtn = document.getElementById('close-edit-modal');
+    const editCloseBtn = editModal.querySelector('.close-btn');
+    const saveDraftEditBtn = document.getElementById('save-draft-edit');
+    const submitEditBtn = document.getElementById('submit-edit');
+    const editButtons = document.querySelectorAll('.edit-btn');
+    
+    editButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const projectId = this.getAttribute('data-project-id');
+            // 填充项目信息到编辑表单
+            editModal.classList.add('show');
+        });
+    });
+    
+    // 关闭编辑弹窗
+    function closeEditModal() {
+        editModal.classList.remove('show');
+    }
+    
+    if (closeEditModalBtn) {
+        closeEditModalBtn.addEventListener('click', closeEditModal);
+    }
+    
+    if (editCloseBtn) {
+        editCloseBtn.addEventListener('click', closeEditModal);
+    }
+    
+    editModal.addEventListener('click', function(e) {
+        if (e.target === editModal) {
+            closeEditModal();
+        }
+    });
+    
+    // 保存草稿
+    if (saveDraftEditBtn) {
+        saveDraftEditBtn.addEventListener('click', function() {
+            alert('项目已保存为草稿');
+            closeEditModal();
+        });
+    }
+    
+    // 提交编辑
+    if (submitEditBtn) {
+        submitEditBtn.addEventListener('click', function() {
+            alert('项目修改已提交');
+            closeEditModal();
+        });
+    }
+    
+    // 接受项目弹窗
+    const acceptModal = document.getElementById('accept-modal');
+    const closeAcceptModalBtn = document.getElementById('close-accept-modal');
+    const acceptCloseBtn = acceptModal.querySelector('.close-btn');
+    const submitAcceptBtn = document.getElementById('submit-accept');
+    const acceptButtons = document.querySelectorAll('.accept-btn');
+    
+    acceptButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const projectId = this.getAttribute('data-project-id');
+            acceptModal.classList.add('show');
+        });
+    });
+    
+    // 关闭接受弹窗
+    function closeAcceptModal() {
+        acceptModal.classList.remove('show');
+    }
+    
+    if (closeAcceptModalBtn) {
+        closeAcceptModalBtn.addEventListener('click', closeAcceptModal);
+    }
+    
+    if (acceptCloseBtn) {
+        acceptCloseBtn.addEventListener('click', closeAcceptModal);
+    }
+    
+    acceptModal.addEventListener('click', function(e) {
+        if (e.target === acceptModal) {
+            closeAcceptModal();
+        }
+    });
+    
+    // 提交接受
+    if (submitAcceptBtn) {
+        submitAcceptBtn.addEventListener('click', function() {
+            const acceptForm = document.getElementById('accept-form');
+            if (acceptForm.checkValidity()) {
+                alert('项目已接受，已流转至关注项目库');
+                closeAcceptModal();
+            } else {
+                alert('请填写接受意见');
+            }
+        });
+    }
+    
+    // 拒绝项目弹窗
+    const rejectModal = document.getElementById('reject-modal');
+    const closeRejectModalBtn = document.getElementById('close-reject-modal');
+    const rejectCloseBtn = rejectModal.querySelector('.close-btn');
+    const submitRejectBtn = document.getElementById('submit-reject');
+    const rejectButtons = document.querySelectorAll('.reject-btn');
+    
+    rejectButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const projectId = this.getAttribute('data-project-id');
+            rejectModal.classList.add('show');
+        });
+    });
+    
+    // 关闭拒绝弹窗
+    function closeRejectModal() {
+        rejectModal.classList.remove('show');
+    }
+    
+    if (closeRejectModalBtn) {
+        closeRejectModalBtn.addEventListener('click', closeRejectModal);
+    }
+    
+    if (rejectCloseBtn) {
+        rejectCloseBtn.addEventListener('click', closeRejectModal);
+    }
+    
+    rejectModal.addEventListener('click', function(e) {
+        if (e.target === rejectModal) {
+            closeRejectModal();
+        }
+    });
+    
+    // 提交拒绝
+    if (submitRejectBtn) {
+        submitRejectBtn.addEventListener('click', function() {
+            const rejectForm = document.getElementById('reject-form');
+            if (rejectForm.checkValidity()) {
+                alert('项目已拒绝，退回至储备库');
+                closeRejectModal();
+            } else {
+                alert('请填写拒绝理由和意见');
+            }
+        });
+    }
     
     // 终止投决按钮
     const stopInvestButtons = document.querySelectorAll('.stop-invest-btn');
